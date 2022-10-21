@@ -1,0 +1,50 @@
+﻿@model SanPham
+@{
+    ViewData["Title"] = "UpSert";
+}
+
+<div class="container">
+    <h3>Thêm mới và Update</h3>
+    <form method="post" asp-action="UpSert">
+
+        <div class="form-group">
+            <label asp-for="Name">Tên sản phẩm</label>
+            <input asp-for="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Description">Mô tả</label>
+            <input asp-for="Description" type="text" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Price">Giá</label>
+            <input asp-for="Price" type="number" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="ImageUrl">Hình ảnh</label>
+            <input asp-for="ImageUrl" type="text" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="TheLoaiId">Thể loại</label>
+            <select asp-for="TheLoaiId" asp-items="@ViewBag.DsTheLoai" class="form-control">
+                <option selected disabled>Chọn thể loại</option>
+            </select>
+            <span asp-validation-for="TheLoaiId" class="text-danger"></span>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-primary">Tạo mới</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name ="_ValidationScriptsPartial"/>
+}

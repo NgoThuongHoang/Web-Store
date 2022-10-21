@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SanPham>
+
+<style>
+    table, thead, td
+    {
+        border:2px solid black;
+        text-align: center;
+    }
+
+    .Action a{
+        text-decoration: none;
+        color:black;        
+    }
+    a:hover{
+        color: orange;
+    }
+    .btn{
+        color:white;
+    }
+</style>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>ImageUrl</th>
+                <th>TheLoaiId</th>
+                <th> Chức năng</th>
+            </tr>
+        </thead>
+
+        @foreach(var item in @Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>...</td>
+                    <td>@item.TheLoaiId</td>
+                    <td witdh="40%">
+                        <a asp-action="Upsert" asp-route-id = "@item.Id">Edit</a> |
+                        <a class="btn btn-primary" onclick="xoa(@item.Id, $(this))">Delete</a> 
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+    <a asp-controller="SanPham" asp-action="Upsert" class="btn btn-primary">Thêm mới</a>
+</div>
+
+@*AJAX*@
+<script>
+    function xoa(id, row){                          
+        $.ajax ({
+        url : `/Admin/SanPham/Delete/${id}`,
+        type: "POST",
+        })
+        .done(function (data){
+            row.closest("tr").remove();
+        })
+    }
+</script>

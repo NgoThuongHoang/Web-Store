@@ -1,0 +1,12 @@
+﻿@model IEnumerable<TheLoai> 
+
+<li class="has-dropdown">
+    <a href="#">Categories <i class="fa fa-angle-down"></i></a>
+    <!-- Sub Menu -->
+    <ul class="sub-menu">
+        @foreach(var item in Model)
+        {
+            <li><a href="#">@item.Name</a></li>
+        }
+    </ul>
+</li>

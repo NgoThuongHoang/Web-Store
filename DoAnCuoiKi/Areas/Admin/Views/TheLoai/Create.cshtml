@@ -1,0 +1,29 @@
+﻿@model TheLoai
+
+<div class="container">
+    <h3>Tên thể loại</h3>
+
+    <form method="post">
+
+        <div asp-validation-sumary ="All" class="text-danger"></div>
+        
+        <div class="form-group">
+            <label>Tên thể loại</label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for ="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Ngày tạo</label>
+            <input asp-for="DateCreated" class="form-control"/>
+            <span asp-validation-for ="DateCreated" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Tạo mới</button>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name ="_ValidationScriptsPartial"/>
+}

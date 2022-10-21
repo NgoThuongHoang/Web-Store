@@ -1,0 +1,40 @@
+﻿<style>
+    table, thead, td
+    {
+        border:2px solid black;
+        text-align: center;
+    }
+
+    .Action a{
+        text-decoration: none;
+        color:black;        
+    }
+    a:hover{
+        color: orange;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên thể loại</th>
+            <th>Ngày tạo</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+
+    @foreach(var item in @ViewBag.TheLoai)
+    {
+        <tbody>
+            <tr>
+                <td width = "30%">@item.Name</td>
+                <td width = "30%">@string.Format("{0:dd/MM/yyyy}",item.DateCreated)</td>
+                <td width = "40%" class="Action">
+                    <a asp-action="Edit" asp-route-id = "@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id = "@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id = "@item.Id">Delete</a> |
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
