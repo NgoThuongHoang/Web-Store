@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace DoAnCuoiKi.Areas.Admin.Controllers
-{
+    {
     [Area("Admin")]
     public class SanPhamController : Controller
     {

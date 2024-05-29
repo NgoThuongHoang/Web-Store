@@ -2,7 +2,7 @@
 using DoAnCuoiKi.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DoAnCuoiKi.Controllers
+namespace DoAnCuoiKi.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class TheLoaiController : Controller
@@ -15,39 +15,8 @@ namespace DoAnCuoiKi.Controllers
 
         public IActionResult Index()
         {
-            /*ViewBag.HoTen = "Ngô Thượng Hoàng";
-            ViewBag.Mssv = "162000700";
-            ViewBag.Nam = "2020";*/
-            /*            var theloai = new TheLoaiViewModel
-                        {
-                            Id = 1,
-                            Name = "Trinh thám"
-                        };
-
-                        return View(theloai);
-            */
-
             var theloai = _db.TheLoai.ToList();
             ViewBag.TheLoai = theloai;
-
-
-            //Truy vấn tìm id > 3
-            /*            var theloai = (from p in _db.TheLoai
-                                       where p.Id > 3
-                                       select p).ToList();
-                        //_db.TheLoai.ToList();
-                        ViewBag.TheLoai = theloai;*/
-
-
-            //Truy vấn tìm thể loại tạo trước ngày 22/02/2022
-            /*            var theloai = (from p in _db.TheLoai
-
-                                       where (DateTime.Compare(p.DateCreated, DateTime.Parse("2022/02/02").Date)) < 0
-
-                                       select p).ToList();
-
-                        ViewBag.TheLoai = theloai;*/
-
             return View();
         }
 
